@@ -1,0 +1,43 @@
+---
+import "$styles/theme.css";
+
+export interface Props {
+    text: string;
+    href: string;
+}
+
+const props = Astro.props as Props;
+---
+
+<div id="container">
+    <a href={props.href}>{props.text}</a>
+</div>
+
+<style>
+    a {
+        color: var(--text-active-dark);
+        text-decoration: none;
+        text-align: center;
+
+        transition: 0.1s;
+        padding: 5px;
+    }
+
+    a:visited,
+    a:active {
+        color: var(--text-active-dark);
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: var(--text-active);
+    }
+
+    #container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        flex-grow: 1;
+    }
+</style>

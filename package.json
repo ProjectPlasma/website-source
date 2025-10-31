@@ -1,0 +1,20 @@
+{
+  "name": "fusion-site",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.5",
+    "astro": "^5.15.2",
+    "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "@iconify-json/mdi": "^1.2.3",
+    "astro-icon": "^1.1.5"
+  }
+}

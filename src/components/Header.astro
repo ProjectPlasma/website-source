@@ -1,0 +1,111 @@
+---
+import HeaderButton from "$components/HeaderButton.astro";
+import MobileNavbar from "$components/MobileNavbar.astro";
+import { Icon } from 'astro-icon/components'
+---
+
+<!-- script for mobile navbar -->
+<script lang="ts">
+    let mobileNavbarOpen = false;
+
+    function openNavbar() {
+        mobileNavbarOpen = true;
+        document.getElementById("mobile-nav").classList.remove("hidden");
+        document.getElementById("mobile-open-nav").classList.add("hidden");
+        document.getElementById("mobile-close-nav").classList.remove("hidden");
+    }
+
+    function closeNavbar() {
+        mobileNavbarOpen = false;
+        document.getElementById("mobile-nav").classList.add("hidden");
+        document.getElementById("mobile-open-nav").classList.remove("hidden");
+        document.getElementById("mobile-close-nav").classList.add("hidden");
+    }
+
+    function toggleNavbar() {
+        mobileNavbarOpen ? closeNavbar() : openNavbar();
+    }
+</script>
+
+<div id="container">
+    <div id="logo-container">
+    </div>
+    
+    <div class="nav desktop-nav">
+        <HeaderButton text="About Us" href="/login" />
+        <HeaderButton text="The Team" href="/login" />
+        <HeaderButton text="Contact Us" href="/login" />
+        <HeaderButton text="News" href="/login" />
+    </div>
+
+    <div id="phone-nav" class="nav phone-nav" onclick="toggleNavbar()">
+        <div id="mobile-open-nav" class="icon-wrapper"><Icon name="mdi:hamburger-menu" width="24px" height="24px" /></div>
+        <div id="mobile-close-nav" class="icon-wrapper hidden"><Icon name="mdi:close" width="24px" height="24px" /></div>
+    </div>
+</div>
+
+<div id="mobile-nav" class="hidden">
+    <MobileNavbar />
+</div>
+
+<style>
+    #container {
+        width: 100%;
+        height: 60px;
+
+        background-color: var(--head-foot-bg);
+        border-bottom: 1px solid var(--border-bg);
+
+        display: flex;
+        justify-content: space-between;
+    }
+
+    #logo-container {
+        min-width: 200px;
+    }
+
+    .nav {
+        width: 100%;
+
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .phone-nav {
+        display: none;
+
+        justify-content: flex-end;
+        align-items: center;
+
+        /* particular values to give button some room */
+        margin-left: 160px;
+        padding-right: 20px;
+
+        color: var(--text-active-dark);
+    }
+
+    /* border between header items in desktop nav */
+    .desktop-nav {
+        width: 380px;
+        padding-right: 30px;
+    }
+
+    @media (max-width: 700px) {
+        .desktop-nav { display: none; }
+        .phone-nav { display: flex; }
+    }
+
+
+    /* to hide the mobile navbar */
+    .hidden {
+        display: none;
+    }
+    .icon-wrapper {
+        width: 24px;
+        height: 24px;
+    }
+
+    
+</style>
+
+
