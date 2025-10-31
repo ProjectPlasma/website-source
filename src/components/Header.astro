@@ -5,7 +5,7 @@ import { Icon } from 'astro-icon/components'
 ---
 
 <!-- script for mobile navbar -->
-<script lang="ts">
+<script>
     let mobileNavbarOpen = false;
 
     function openNavbar() {
@@ -25,6 +25,11 @@ import { Icon } from 'astro-icon/components'
     function toggleNavbar() {
         mobileNavbarOpen ? closeNavbar() : openNavbar();
     }
+
+    let button = document.getElementById("phone-nav");
+    if(button) {
+        button.addEventListener("click", toggleNavbar);
+    }
 </script>
 
 <div id="container">
@@ -38,7 +43,7 @@ import { Icon } from 'astro-icon/components'
         <HeaderButton text="News" href="/login" />
     </div>
 
-    <div id="phone-nav" class="nav phone-nav" onclick="toggleNavbar()">
+    <div id="phone-nav" class="nav phone-nav">
         <div id="mobile-open-nav" class="icon-wrapper"><Icon name="mdi:hamburger-menu" width="24px" height="24px" /></div>
         <div id="mobile-close-nav" class="icon-wrapper hidden"><Icon name="mdi:close" width="24px" height="24px" /></div>
     </div>

@@ -1,0 +1,32 @@
+---
+import Layout from "$layouts/Layout.astro";
+import NotFoundPage from "./404.astro";
+import { getCollection, getEntryBySlug } from 'astro:content';
+
+export async function getStaticPaths() {
+const posts = await getCollection('news');
+    return posts.map((p) => ({ params: { slug: p.slug } }));
+}
+
+const { slug } = Astro.params;
+const entry = await getEntryBySlug('news', slug);
+
+const { data } = entry;
+let contentHtml = entry.rendered.html ?? entry.rendered.html ?? 'No content';
+---
+
+<Layout pageTitle={data.title}>
+    <article>
+        <h1>{data.title}</h1>
+        {data.date && <time datetime={data.date.toISOString()}>{data.date.toDateString()}</time>}
+        {data.summary && <p><strong>Summary:</strong> {data.summary}</p>}
+        <div set:html={contentHtml}></div>
+    </article>
+</Layout>
+
+
+<style>
+    article {
+        margin: 50px;
+    }
+</style>
