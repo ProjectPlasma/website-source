@@ -14,3 +14,5 @@ Lorem something-or-other.
 > Just to note this is a cool section
 
 Yeah so this is me yappiong.
+
+![Image description](/news/img1.png)

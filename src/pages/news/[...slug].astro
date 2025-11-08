@@ -43,7 +43,7 @@ let contentHtml = entry.rendered.html ?? entry.rendered.html ?? 'No content';
         <div class="title-spacer"></div>
 
 
-        <div set:html={contentHtml}></div>
+        <div class="article-content" set:html={contentHtml}></div>
     </article>
 </Layout>
 
@@ -85,6 +85,12 @@ let contentHtml = entry.rendered.html ?? entry.rendered.html ?? 'No content';
 
         font-size: 0.9em;
         color: var(--text-gray);
+    }
+
+    :global(.article-content img) {
+        max-width: 100%;
+        height: auto;
+        display: block;
     }
 
         
