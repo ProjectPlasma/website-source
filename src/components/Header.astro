@@ -33,12 +33,13 @@ import { Icon } from 'astro-icon/components'
 </script>
 
 <div id="container">
-    <div id="logo-container">
-    </div>
+    <a id="logo-container" href="/">
+        <img alt="Logo" src="/logo_107_60.webp" href="/">
+    </a>
     
     <div class="nav desktop-nav">
         <HeaderButton text="Research" href="/login" />
-        <HeaderButton text="About Us" href="/login" />
+        <HeaderButton text="About Us" href="/aboutus" />
         <HeaderButton text="News" href="/login" />
         <HeaderButton text="Contact Us" href="/login" />
     </div>
@@ -66,7 +67,11 @@ import { Icon } from 'astro-icon/components'
     }
 
     #logo-container {
-        min-width: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        min-width: 150px;
     }
 
     .nav {
