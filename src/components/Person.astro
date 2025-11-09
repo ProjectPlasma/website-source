@@ -1,0 +1,43 @@
+---
+const { name, role, imgSrc } = Astro.props;
+---
+<div id="container">
+    <img id="image" alt="Image of Team Member" src={imgSrc}>
+    <p id="name">{name}</p>
+    <p id="role">{role}</p>
+</div>
+
+<style>
+    #container {
+        flex: 1 1 calc(25% - 1rem);
+        max-width: calc(25% - 1rem);
+        box-sizing: border-box;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 15px;
+    }
+
+    @media (max-width: 700px) {
+        #container {
+            flex: 1 1 100%;
+            max-width: 350px;
+        }
+    }
+
+    #image {
+        width: 80%;
+        aspect-ratio: 1 / 1; 
+        border-radius: 15px;
+    }
+
+    #name {
+        margin-top: 10px;
+        font-weight: 600;
+    }
+
+    p {
+        margin: 2px;
+    }
+</style>
