@@ -1,0 +1,73 @@
+---
+import Layout from "$layouts/Layout.astro";
+import Person from "$components/Person.astro";
+---
+
+<Layout pageTitle="Home">
+    <div id="container">
+
+        <div id="mission-container">
+            <h1 class="container-title">Our Mission</h1>
+            <a>Our mission is to have neutron production by the end of the 2025/2026 academic year, and over
+the subsequent years improve on our systems hopefully reaching a level of neutron
+production that is industry competitive.</a>
+            <a>This project also provides students the opportunity to develop the technical skills wanted by
+the fusion industry, and by working closely with ANFS, the opportunity to attend networking
+events with guest speakers from the fusion sector.</a>
+        </div>
+
+        <div id="team-container">
+            <h1 class="container-title">Meet The Team</h1>
+            <a>Our team blah blah maybe qwuick descrioptipn</a>
+            
+            <div class="team">
+                <Person name="George" role="Team Lead" imgSrc="/profiles/profile_6.webp" />
+                <Person name="Joeseph" role="Team Lead" imgSrc="/profiles/profile_5.webp" />
+                <Person name="Marren" role="Team Lead" imgSrc="/profiles/profile_4.webp" />
+                <Person name="Name" role="Team Lead" imgSrc="/profiles/profile_3.webp" />
+                <Person name="Name" role="Team Lead" imgSrc="/profiles/profile_2.webp" />
+                <Person name="Name" role="Team Lead" imgSrc="/profiles/profile_1.webp" />
+                <Person name="Name" role="Team Lead" imgSrc="/profiles/profile_0.webp" />
+            </div>
+        </div>
+
+    </div>
+</Layout>
+
+<style>
+    #container {
+        width: 100%;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        padding: 30px;
+        box-sizing: border-box;
+    }
+
+    .container-title {
+        width: 100%;
+        text-align: center;
+    }
+
+    a {
+        display: block;
+        text-align: center;
+
+        margin: 7px;
+    }
+
+    .team {
+        margin-top: 30px;
+
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .team * {
+    }
+
+</style>

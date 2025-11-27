@@ -9,9 +9,9 @@ export interface Props {
 const props = Astro.props as Props;
 ---
 
-<div id="container">
-    <a href={props.href}>{props.text}</a>
-</div>
+<a id="container" href={props.href}>
+    {props.text}
+</a>
 
 <style>
     a {
@@ -29,15 +29,17 @@ const props = Astro.props as Props;
         text-decoration: none;
     }
 
-    a:hover {
-        color: var(--text-active);
-    }
-
     #container {
         display: flex;
         align-items: center;
         justify-content: center;
 
         flex-grow: 1;
+    }
+
+    #container:hover {
+        background-color: #eaeaea;
+        color: var(--text-active);
+        cursor: pointer;
     }
 </style>

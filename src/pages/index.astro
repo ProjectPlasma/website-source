@@ -3,5 +3,43 @@ import Layout from "$layouts/Layout.astro";
 ---
 
 <Layout pageTitle="Home">
-    this is the page content
+    <br>
+    <br>
+
+    <div id="banner-container">
+        <img id="banner" src="/profiles/banner.webp">
+        <h2 id="banner-text">Project Plasma</h2>
+    </div>
+
+
 </Layout>
+
+
+<style>
+    #banner-container {
+        width: 100%;
+
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        position: relative;
+    }
+
+    #banner {
+        width: 100%;
+        filter: brightness(80%);
+    }
+    @media (max-width: 800px) {
+        #banner {
+            width: 120%;
+        }
+    }
+
+    #banner-text {
+        position: absolute;
+        color: white;
+        letter-spacing: 3px;
+    }
+</style>

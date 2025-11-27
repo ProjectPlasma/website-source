@@ -1,5 +1,5 @@
 ---
-title: "Demo News"
+title: "Demo News This is the news"
 date: 2025-10-29
 image: "cover-image-url-here"
 summary: "Our team has published new findings in quantam protein folding."
