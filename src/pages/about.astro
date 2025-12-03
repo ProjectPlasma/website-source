@@ -8,18 +8,13 @@ import Person from "$components/Person.astro";
 
         <div id="mission-container">
             <h1 class="container-title">Our Mission</h1>
-            <a>Our mission is to have neutron production by the end of the 2025/2026 academic year, and over
-the subsequent years improve on our systems hopefully reaching a level of neutron
-production that is industry competitive.</a>
-            <a>This project also provides students the opportunity to develop the technical skills wanted by
-the fusion industry, and by working closely with ANFS, the opportunity to attend networking
-events with guest speakers from the fusion sector.</a>
+            <a>We are Project Plasma. A student-led team at the University of Sheffield looking at the research and development of a Farnsworth-Hirsch fusor. We provide members of our team the opportunity to develop technical skills wanted by the fusion industry, from working with simulation software to understand plasma physics, to hands-on work integrating systems we have built onto the fusor. By working closely with the Universities Nuclear society, ANFS, we also provide the opportunity to attend networking events with guest speakers from the fusion sector.</a>
+            <a>Our mission, for the 2025/2026 academic year, is to reach neutron production from Deuterium-Deuterium reactions, and over the subsequent years improve on what we have built, hopefully reaching a level of neutron production that is industry competitive.</a>
         </div>
 
+        <br>
         <div id="team-container">
             <h1 class="container-title">Meet The Team</h1>
-            <a>Lorem ipsum maybe a description of team here?...</a>
-            
             <div class="team">
                 <Person name="George Viant" role="Project Lead" imgSrc="/profiles/profile_6.webp" />
                 <Person name="Joeseph Whitehurts" role="Lab Lead" imgSrc="/profiles/profile_5.webp" />
@@ -44,6 +39,10 @@ events with guest speakers from the fusion sector.</a>
 
         padding: 30px;
         box-sizing: border-box;
+    }
+
+    #mission-container {
+        max-width: 900px;
     }
 
     .container-title {
