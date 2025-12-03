@@ -9,28 +9,29 @@ import "$styles/theme.css";
         <div class="link-group">
             <h3>About Us</h3>
             <ul>
-                <li>About Us</li>
-                <li>The Team</li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/research">Research</a></li>
             </ul>
         </div>
         <div class="link-group">
             <h3>Media</h3>
             <ul>
-                <li>News</li>
+                <li><a href="/news">News</a></li>
             </ul>
         </div>
         <div class="link-group">
             <h3>Socials</h3>
             <ul>
-                <li>LinkedIn</li>
-                <li>Website</li>
+                <li><a href="https://www.linkedin.com/company/project-plasma/">LinkedIn</a></li>
+                <li><a href="https://www.instagram.com/plasmasheffield/">Instagram</a></li>
             </ul>
         </div>
         <div class="link-group">
             <h3>Contact</h3>
             <ul>
-                <li>LinkedIn</li>
-                <li>Email</li>
+                <li><a href="mailto:projectplasma@sheffield.ac.uk">projectplasma@sheffield.ac.uk</a></li>
+                <li><a href="https://maps.app.goo.gl/ZyBkUpDFjN9gRpbS7">Dainton Building<br>
+                    13 Brook Hill, Sheffield S3 7HF</a></li>
             </ul>
         </div>
     </div>
@@ -93,5 +94,11 @@ import "$styles/theme.css";
     /* if phone */
     @media (max-width: 800px) {
         #footer { flex-direction: column; }
+    }
+
+    a:visited,
+    a:active, a {
+        color: var(--text-active-dark);
+        text-decoration: none;
     }
 </style>
