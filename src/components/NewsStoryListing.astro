@@ -1,0 +1,74 @@
+---
+import "$styles/theme.css";
+
+const { data, url } = Astro.props;
+---
+
+<a href={url}>
+    <div id="container">
+        <div id="top-row">
+            <p id="title">{data.title}</p>
+            <p id="date">{data.date && (
+            <time data.dateTime={data.date.toISOString()}>
+                {data.date.toLocaleDateString("en-US", {
+                month: "short",
+                day: "numeric",
+                year: "numeric",
+                }).replace(",", "")
+                .replace(/(\d+)/, d => {
+                const n = parseInt(d, 10);
+                const suffix = n % 10 === 1 && n !== 11 ? "st"
+                : n % 10 === 2 && n !== 12 ? "nd"
+                : n % 10 === 3 && n !== 13 ? "rd"
+                : "th";
+                return `${n}${suffix}`;
+                })}
+            </time>
+            )}</p>
+        </div>
+        <div id="description-container">
+            <p id="description">{data.summary.length > 150 ? data.summary.slice(0, 150) + "..." : data.summary}</p>
+        </div>
+    </div>
+</a>
+
+<style>
+    #container {
+        width: 100%;
+        justify-items: space-between;
+    }
+
+    #top-row {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    @media (max-width: 800px) {
+        #top-row { flex-direction: column; }
+    }
+
+    #title {
+        font-size: 1.2em;
+        margin: 0;
+    }
+
+    #date {
+        font-size: 0.8em;
+        font-weight: 800;
+        opacity: 0.3;
+        margin: 0;
+    }
+
+    #description {
+        margin-top: 0;
+        opacity: 0.5;
+    }
+
+
+    a:visited,
+    a:active, a {
+        text-decoration: none;
+        color: inherit;
+    }
+</style>
+

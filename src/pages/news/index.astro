@@ -1,20 +1,151 @@
 ---
 import Layout from "$layouts/Layout.astro";
+import FeaturedStory from "$components/FeaturedStory.astro";
+import NewsStoryListing from "$components/NewsStoryListing.astro";
+import { getCollection, getEntryBySlug } from 'astro:content';
+
+/*
+*   The site WILL break if no news stories are added.
+*/
+
+let stories = await getCollection("news");
+stories.sort((a, b) => b.data.date - a.data.date);
+
+let latestStory = stories[0].data;
+let latestStoryUrl = "/news/" + stories[0].slug;
 ---
 
 <Layout pageTitle="News">
     <div id="container">
-        This page is in mainteinance. Please check back soon.
+
+        <div id="relevant-container">
+            <div id="latest-container">
+                <a id="latest-text">LATEST STORY</a>
+                <a href={latestStoryUrl} id="latest-title">{latestStory.title}</a>
+                <a class="img-frame" href={latestStoryUrl}>
+                    <img href={latestStoryUrl} src={latestStory.image} alt="Cover image for the latest news story"></a>
+                </a>
+            </div>
+            <div id="featured-container">
+                <a id="featured-text">FEATURED STORIES</a>
+                <FeaturedStory title="Mixing Deuterium" description="In recent days we mixed our first deuterium with the plutonium to form dihydrogen monoxide. Yeah G. That's right. We're the goats." date={latestStory.date} url="/news/test2" />
+                <FeaturedStory title="Mixing Deuterium" description="In recent days we mixed our first deuterium with the plutonium to form dihydrogen monoxide. Yeah G. That's right. We're the goats." date={latestStory.date} url="/news/test2" />
+                <FeaturedStory title="Mixing Deuterium" description="In recent days we mixed our first deuterium with the plutonium to form dihydrogen monoxide. Yeah G. That's right. We're the goats." date={latestStory.date} url="/news/test2" />
+            </div>
+        </div>
+
+        <h2>Other stories</h2>
+        <div id="stories-container">
+            {stories.map((item) => (
+                <NewsStoryListing data={item.data} url={"/news/" + item.slug} />
+            ))}
+        </div>
+
     </div>
 </Layout>
 
 <style>
     #container {
         display: flex;
-        justify-content: center;
+        flex-direction: column;
         align-items: center;
+        justify-content: center;
 
         height: 100%;
+        margin-top: 20px;
+    }
+
+    #relevant-container {
+        width: 100%;
+        margin: 20px;
+
+        display: flex;
+        justify-content: center;
+    }
+
+    @media (max-width: 1000px) {
+        #relevant-container { flex-direction: column; gap: 30px; justify-content: center; align-items: center; }
+        #latest-container { width: 90% !important; }
+        #featured-container { width: 75% !important; }
+        #featured-text { margin-left: 5px !important; }
+    }
+
+    #latest-container {
+        width: 44%;
+        margin: 0% 3% 0% 3%;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #latest-text {
+        font-size: 0.8em;
+        font-weight: 800;
+        opacity: 0.3;
+
+        text-decoration: underline;
+        text-underline-offset: 5px;
+        text-align: left;
+        width: 80%;
+    }
+
+    #latest-title {
+        font-size: 1.6em;
+        font-weight: 500;
+        margin: 10px 0px 5px 0px;
+        width: 80%;
+    }
+
+    .img-frame {
+        width: 80%;
+        max-height: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border: 1px solid var(--border-bg);
+        box-sizing: border-box;
+    }
+
+    .img-frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    #featured-container {
+        width: 44%;
+        margin: 0% 3% 0% 3%;
+    }
+
+    #featured-text {
+        display: block;
+        font-size: 0.8em;
+        font-weight: 800;
+        opacity: 0.3;
+        text-align: left;
+        margin-left: 20px;
+
+        text-decoration: underline;
+        text-underline-offset: 5px;
+    }
+
+    a:visited,
+    a:active, a {
+        text-decoration: none;
+        color: black;
+    }
+
+    #stories-container {
+        width: 70%;
+
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        padding-bottom: 50px;
     }
 </style>
 
