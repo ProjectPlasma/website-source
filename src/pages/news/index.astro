@@ -13,6 +13,8 @@ stories.sort((a, b) => b.data.date - a.data.date);
 
 let latestStory = stories[0].data;
 let latestStoryUrl = "/news/" + stories[0].slug;
+
+console.log(stories[0]);
 ---
 
 <Layout pageTitle="News">
@@ -28,13 +30,11 @@ let latestStoryUrl = "/news/" + stories[0].slug;
             </div>
             <div id="featured-container">
                 <a id="featured-text">FEATURED STORIES</a>
-                <FeaturedStory title="Mixing Deuterium" description="In recent days we mixed our first deuterium with the plutonium to form dihydrogen monoxide. Yeah G. That's right. We're the goats." date={latestStory.date} url="/news/test2" />
-                <FeaturedStory title="Mixing Deuterium" description="In recent days we mixed our first deuterium with the plutonium to form dihydrogen monoxide. Yeah G. That's right. We're the goats." date={latestStory.date} url="/news/test2" />
-                <FeaturedStory title="Mixing Deuterium" description="In recent days we mixed our first deuterium with the plutonium to form dihydrogen monoxide. Yeah G. That's right. We're the goats." date={latestStory.date} url="/news/test2" />
+                <FeaturedStory storyObj={stories[0]} />
             </div>
         </div>
 
-        <h2>Other stories</h2>
+        <h2>All Stories</h2>
         <div id="stories-container">
             {stories.map((item) => (
                 <NewsStoryListing data={item.data} url={"/news/" + item.slug} />
@@ -139,7 +139,7 @@ let latestStoryUrl = "/news/" + stories[0].slug;
     }
 
     #stories-container {
-        width: 70%;
+        width: 85%;
 
         display: flex;
         flex-direction: column;

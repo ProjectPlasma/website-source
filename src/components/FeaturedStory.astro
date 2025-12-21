@@ -1,16 +1,16 @@
 ---
 import "$styles/theme.css";
 
-const { title, description, date, url } = Astro.props;
+const { storyObj } = Astro.props;
 ---
 
-<a href={url}>
+<a href={"/news/" + storyObj.slug}>
     <div id="container">
         <div id="info-container">
-            <p id="title">{title}</p>
-            <p id="date">{date && (
-                        <time dateTime={date.toISOString()}>
-                            {date.toLocaleDateString("en-US", {
+            <p id="title">{storyObj.data.title}</p>
+            <p id="date">{storyObj.data.date && (
+                        <time dateTime={storyObj.data.date.toISOString()}>
+                            {storyObj.data.date.toLocaleDateString("en-US", {
                             month: "short",
                             day: "numeric",
                             year: "numeric",
@@ -26,7 +26,7 @@ const { title, description, date, url } = Astro.props;
                         </time>
                         )}</p>
         </div>
-        <p id="description">{description.length > 100 ? description.slice(0, 100) + "..." : description}</p>
+        <p id="description">{storyObj.data.summary.length > 100 ? storyObj.data.summary.slice(0, 100) + "..." : storyObj.data.summary}</p>
     </div>
 </a>
 
