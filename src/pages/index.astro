@@ -1,14 +1,57 @@
 ---
 import Layout from "$layouts/Layout.astro";
+import Sponsors from "$components/Sponsors.astro";
+import { getCollection } from 'astro:content';
+
+
+let stories = await getCollection("news");
+stories.sort((a, b) => b.data.date - a.data.date);
+let latestStoryObj = stories[0];
+let latestStory = latestStoryObj.data;
+let latestStoryUrl = "/news/" + stories[0].slug;
 ---
 
 <Layout pageTitle="Home">
-    <br>
-
     <div id="banner-container">
         <img id="banner" src="/profiles/banner.webp">
         <h2 id="banner-text">Project Plasma</h2>
     </div>
+
+    <div id="main-container">
+        <div id="description-container">
+            <a>We are a student-led, undergraduate team working on the development of Farmsworth-Hirsh fusor, at the University of Sheffield.</a>
+            <br>
+            <img id="cover-img" src="cover-img.jpeg">
+        </div>
+
+        <div id="story-container"> 
+            <div id="story-header">
+            <a href={latestStoryUrl} id="story-date">Latest Story</a>
+            <a href={latestStoryUrl} id="story-date">{latestStoryObj.data.date && (
+            <time dateTime={latestStoryObj.data.date.toISOString()}>
+                {latestStoryObj.data.date.toLocaleDateString("en-US", {
+                month: "short",
+                day: "numeric",
+                year: "numeric",
+                }).replace(",", "")
+                .replace(/(\d+)/, d => {
+                const n = parseInt(d, 10);
+                const suffix = n % 10 === 1 && n !== 11 ? "st"
+                : n % 10 === 2 && n !== 12 ? "nd"
+                : n % 10 === 3 && n !== 13 ? "rd"
+                : "th";
+                return `${n}${suffix}`;
+                })}
+            </time>
+            )}</a>
+            </div>
+            <a href={latestStoryUrl} id="story-title">{latestStory.title}</a>
+            <br>
+            <a id="story-description" href={latestStoryUrl}>{latestStory.summary}</a>
+        </div>
+    </div>
+
+    <Sponsors />
 
 </Layout>
 
@@ -33,17 +76,82 @@ import Layout from "$layouts/Layout.astro";
     #banner-text {
         position: absolute;
         color: white;
-        letter-spacing: 8px;
-        font-size: 2.5em;
+        letter-spacing: 1px;
+        font-weight: 800;
+        font-size: 3.5em;
+        opacity: 0.3;
     }
     @media (max-width: 800px) {
         #banner {
             width: 120%;
         }
         #banner-text {
-            font-size: 1.2em;
-            letter-spacing: 2px;
+            font-size: 1.3em;
+            letter-spacing: 1px;
         }
     }
+
+    #main-container {
+        width: 100%;
+        margin-top: 20px;
+
+        display: flex;
+        gap: 30px;
+    }
+
+    #story-container, #description-container {
+        width: 50%;
+
+        padding: 20px;
+        padding-left: 40px;
+        padding-right: 40px;
+        box-sizing: border-box;
+    }
+
+    #story-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 5px;
+    }
+
+    #story-date {
+        padding: 0;
+        margin: 0;
+
+        color: #555;
+        font-size: 0.9em;
+    }
+
+    #story-title {
+        margin: 0;
+        padding: 0;
+        font-weight: 700;
+        font-size: 1.3em;
+    }
+
+    a:visited,
+    a:active, a {
+        text-decoration: none;
+        color: black;
+    }
+
+    #cover-img {
+        width: 60%;
+        margin-left: 20%;
+        margin-top: 10px;
+    }
+
+    @media (max-width: 1000px) {
+        #main-container {
+            flex-direction: column;
+        }
+        #story-container, #description-container {
+            width: 100%;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+    }
+    
+
 
 </style>
