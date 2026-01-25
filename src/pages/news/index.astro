@@ -2,7 +2,7 @@
 import Layout from "$layouts/Layout.astro";
 import FeaturedStory from "$components/FeaturedStory.astro";
 import NewsStoryListing from "$components/NewsStoryListing.astro";
-import { getCollection, getEntryBySlug } from 'astro:content';
+import { getCollection } from 'astro:content';
 
 /*
 *   The site WILL break if no news stories are added.
@@ -13,8 +13,6 @@ stories.sort((a, b) => b.data.date - a.data.date);
 
 let latestStory = stories[0].data;
 let latestStoryUrl = "/news/" + stories[0].slug;
-
-console.log(stories[0]);
 ---
 
 <Layout pageTitle="News">
