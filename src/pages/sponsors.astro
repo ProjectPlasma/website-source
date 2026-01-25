@@ -1,39 +1,9 @@
 ---
 import Layout from "$layouts/Layout.astro";
+import Sponsors from "$components/Sponsors.astro";
 ---
 
 <Layout pageTitle="Sponsors">
-    <div id="container">
-        <br>
-        <h1 id="title">Sponsors</h1>
-        
-        <div id="data">
-        </div>
-    </div>
+    <Sponsors />
 </Layout>
-
-<style>
-    #container {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-
-        height: 100%;
-    }
-
-    #title {
-        font-size: 3em;
-    }
-
-    #data {
-        text-align: center;
-    }
-
-    a:visited,
-    a:active, a {
-        color: #555;
-        text-decoration: underline;
-    }
-</style>
-
 
