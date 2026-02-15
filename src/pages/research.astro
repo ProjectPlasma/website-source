@@ -4,16 +4,106 @@ import Layout from "$layouts/Layout.astro";
 
 <Layout pageTitle="Research">
     <div id="container">
-        This page is in mainteinance. Please check back soon.
+        <div>
+            <p class="text" style="font-size: 1.2em; font-weight: 500;">A fusor is a device first developed during the early 60s by a scientist by the name of Philo Farnsworth. This design was then later improved by two other scientists, Hirsch and Meeks, in the mid 60s, and has been given the name ‘Farnsworth-Hirsch’ fusor. A fusor is a fusion device, and primarily uses an electric field to contain and heat ions to a temperature at which they can undergo fusion - this is called Internal Electrostatic Confinement (IEC) fusion. Outlined below are some of the systems on our fusor, with a slight explanation on how it works if you are interested.</p>
+        </div>
+
+        <div id="all-container">
+            <div class="section-container">
+                <img class="section-image" src="/research/grids.webp" alt="">
+                <div>
+                    <h3>Grids</h3>
+                    <p class="text">The inner grid is key to forcing fusion to occur and producing plasma. It is what shapes the electric field, constraining ions to a set path to increase the chance of collisions. Symmetrical, concentric rings have proven the best for containment, and a thickness of wire has to be chosen to balance the ease of building the grid, and the benefits gained from a more transparent inner grid. Shown on the right is a picture of one of our grids.</p>
+                </div>
+            </div>
+            <div class="section-container">
+                <img class="section-image" src="/research/grids.webp" alt="">
+                <div>
+                    <h3>High Voltage</h3>
+                    <p class="text">The high voltage system is a vital component in our goal to reach fusion. It requires a heavily insulated feedthrough to supply the inner grid with a negative voltage in the order of thousands of volts. This is achieved using custom circuitry, transformers able to scale a standard voltages to nearly 1000 times greater, negative power supplies and custom printed safety features. Shown on the left is an image of X. We plan on scaling this voltage up even higher in the future, reaching the levels required to successfully fuse deuterium.</p>
+                </div>
+            </div>
+            <div class="section-container">
+                <img class="section-image" src="/research/pressure.webp" alt="">
+                <div>
+                    <h3>Pressure</h3>
+                    <p class="text">The pressure system is essential in sustaining our plasma. If a low enough pressure cannot be reached, then the ions lose too much energy to collisions as they are accelerated through the chamber, and therefore are unable to reach an energy required for the formation of plasma. Shown on the right is a picture of our backing pump and turbomolecular pump system. The turbomolecular pump allows us to reach a high vacuum.</p>
+                </div>
+            </div>
+            <div class="section-container">
+                <img class="section-image" src="/research/gas.webp" alt="">
+                <div>
+                    <h3>Gas</h3>
+                    <p class="text">The gas system is crucial in the production of neutrons, as this is how we deliver deuterium into our fusor. Working closely with unique software, we use a mass flow controller and needle valve to allow us to finely control the rate of flow of deuterium. The gas system works hand-in-hand with our vacuum system to maintain an optimal pressure for fusion to occur at.</p>
+                </div>
+            </div>
+            <div class="section-container">
+                <img class="section-image" src="/research/grids.webp" alt="">
+                <div>
+                    <h3>Raspberry Pi</h3>
+                    <p class="text">The Raspberry Pi system will be paramount to the safety of the team when running deuterium experiments. It will allow us to remotely control all the systems listed above from a centralised system, with automatic safety measures installed. It can also take pictures, saving the RAW data to be processed and give us a useful insight into how our plasma behaves at different pressures, voltages and with different shaped grids.</p>
+                </div>
+            </div>
+        </div>
+
     </div>
 </Layout>
 
 <style>
     #container {
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
 
         height: 100%;
+
+        margin: 10px 80px 20px 80px;
+    }
+
+    #all-container {
+        width: 100%;
+
+        display: flex;
+        flex-direction: column;
+        gap: 20px; /* gap between sections */
+
+        margin-top: 20px;
+    }
+
+    .section-container {
+        display: flex;
+        align-items: center;
+        gap: 50px; /* gap between img / text */
+
+        flex-direction: row-reverse;
+    }
+    .section-container:nth-child(even) {
+        flex-direction: row; /* image right, text left */
+    }
+
+    .section-image {
+        width: auto;
+        height: auto;
+        max-width: 360px;
+        max-height: 230px;
+        object-fit: contain;
+
+        border-radius: 5px;
+    }
+
+    @media (max-width: 1024px) {
+        #container {
+            margin: 10px 30px 20px 30px; /* shrink left/right margin */
+        }
+
+        #all-container {
+            gap: 0px; /* remove vertical gap between sections */
+        }
+
+        .section-container {
+            gap: 25px; /* reduce gap between img / text */
+            flex-direction: column !important; /* force all sections img -> text vertically */
+        }
     }
 </style>
