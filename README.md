@@ -4,7 +4,6 @@ This README covers adding blog posts, and the CI/CD process.
 
 ---
 
-
 ## Blog Posts
 ### Naming
 To create a blog post, you must create a file in `src/content/news/<name>.md`.
