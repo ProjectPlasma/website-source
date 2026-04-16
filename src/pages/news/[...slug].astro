@@ -40,10 +40,13 @@ let contentHtml = entry.rendered.html ?? entry.rendered.html ?? 'No content';
                 )}
             </a>
         </div>
-        <div class="title-spacer"></div>
 
+        <div class="title-spacer"></div>
+        <p class="story-summary">{data.summary}</p>
 
         <div class="article-content" set:html={contentHtml}></div>
+
+        <p class="story-author"> Written by {data.author}</p>
     </article>
 </Layout>
 
@@ -86,10 +89,24 @@ let contentHtml = entry.rendered.html ?? entry.rendered.html ?? 'No content';
     }
 
     :global(.article-content img) {
-        max-width: 100%;
+        width: 100%;
+        max-width: 600px;
         height: auto;
         display: block;
+
+        padding-top: 5px;
+        padding-bottom: 5px;
     }
 
-        
+    .story-summary {
+        font-size: 0.9em;
+        color: var(--text-gray);
+        font-weight: 600;
+    }
+
+    .story-author {
+        font-weight: 600;
+        color: var(--text-gray);
+        padding-top: 10px;
+    }
 </style>

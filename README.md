@@ -15,12 +15,14 @@ The markdown file must start with the following header:
 ---
 title: "Update on our First Semester as Project Plasma"
 date: 2026-02-12
+author: "Trevor and Michael"
 image: "/news/christmas_tree_grid.png"
 summary: "This is a short blog post outlining some of the work we have done recently."
 ---
 ```
 `title` - indicates the post title<br>
 `date` - should be the date of releasing the blog post<br>
+`author` - the author(s) of the blog<br>
 `image` - the cover image for the blog post<br>
 `summary` - a brief summary of the blog post
 
