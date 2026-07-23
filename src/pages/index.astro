@@ -1,17 +1,31 @@
 ---
+import "$styles/theme.css";
+
 import Layout from "$layouts/Layout.astro";
 import Sponsors from "$components/Sponsors.astro";
 import { getCollection } from 'astro:content';
 
-
 let stories = await getCollection("news");
 stories.sort((a, b) => b.data.date - a.data.date);
+
 let latestStoryObj = stories[0];
 let latestStory = latestStoryObj.data;
 let latestStoryUrl = "/news/" + stories[0].slug;
+
+const showHiringBanner = false;
+const hiringForm = "https://forms.gle/bvmefcNiYAwWnaZb6"; // only uni students can access this by email filter
 ---
 
 <Layout pageTitle="Home">
+    {showHiringBanner && (
+        <div>
+            <div id="hiring-container">
+                <p><b>We are looking for 5 new recruits!</b> If our work interests you and you want to join the project, apply via the&nbsp;</p>
+                <a id="apply-link" href={hiringForm}><b>link here.</b></a>
+            </div>
+        </div>
+    )}
+
     <div id="banner-container">
         <img id="banner" src="/profiles/banner.webp">
         <h2 id="banner-text">Project Plasma</h2>
@@ -148,7 +162,26 @@ let latestStoryUrl = "/news/" + stories[0].slug;
             padding-right: 20px;
         }
     }
-    
 
+    #apply-link {
+        color: var(--text-active);
+        text-decoration: none;
+        text-align: center;
 
+        transition: 0.1s;
+    }
+
+    #apply-link:hover {
+        color: var(--text-active-dark);
+    }
+
+    #hiring-container {
+        background-color: #442a87;
+        color: white;
+
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 </style>

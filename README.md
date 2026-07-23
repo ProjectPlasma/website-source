@@ -4,6 +4,14 @@ This README covers adding blog posts, and the CI/CD process.
 
 ---
 
+## Recruiting Banner
+To modify the recruiting banner, head to `src/pages/index.astro` and within the top of the file:
+```javascript
+const showHiringBanner = true; // change to false to hide, always lowercase
+const hiringForm = "https://forms.gle/laAkdLvBnnM"; // you can modify the form link here
+```
+
+
 ## Blog Posts
 ### Naming
 To create a blog post, you must create a file in `src/content/news/<name>.md`.
